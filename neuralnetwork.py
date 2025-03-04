@@ -4,12 +4,6 @@ class layer:
     def __init__(self):
         self.input = None
         self.output = None
-    
-    def forwardPropagation(self):
-        pass
-
-    def backwardPropagation(self):
-        pass
 
 class dense(layer):
     def __init__(self, inputSize, outputSize):
