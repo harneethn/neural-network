@@ -15,7 +15,6 @@ This repository contains a fully implemented neural network built from scratch u
 ```python
 import numpy as np
 
-# layers
 class layer:
     def __init__(self):
         self.input = None
