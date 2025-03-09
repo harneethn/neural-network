@@ -11,7 +11,7 @@ This repository contains a fully implemented neural network built from scratch u
 
 ## Code Implementation
 
-### Layers
+### 1. Layers
 ```python
 import numpy as np
 
@@ -27,7 +27,7 @@ class layer:
         pass
 ```
 
-### Dense Layer
+### (a) Dense Layer
 ```python
 class dense(layer):
     def __init__(self, inputSize, outputSize):
@@ -44,8 +44,7 @@ class dense(layer):
         self.bias -= learningRate * np.sum(outputGradient, axis=1, keepdims=True)
         return np.dot(self.weights.T, outputGradient)
 ```
-
-### Activation Functions
+### (b) Activation Layer
 ```python
 class activation(layer):
     def __init__(self, activation, activationPrime):
@@ -59,8 +58,9 @@ class activation(layer):
     def backwardPropagation(self, outputGradient):
         return np.multiply(outputGradient, self.activationPrime(self.input))
 ```
+### 2. Activation Functions
 
-### Tanh Activation
+### (a) Tanh Activation
 ```python
 class tanh(activation):
     def __init__(self):
@@ -69,7 +69,7 @@ class tanh(activation):
         super().__init__(tanh, tanhPrime)
 ```
 
-### ReLU Activation
+### (b) ReLU Activation
 ```python
 class relu(activation):
     def __init__(self):
@@ -78,7 +78,7 @@ class relu(activation):
         super().__init__(relu, reluPrime)
 ```
 
-### Softmax Activation
+### (c) Softmax Activation
 ```python
 class softmax(activation):
     def __init__(self):
@@ -87,7 +87,7 @@ class softmax(activation):
         super().__init__(softmax, softmaxPrime)
 ```
 
-### Loss Functions
+### 3. Loss Functions
 ```python
 def meanSquaredError(trueY, predY):
     return np.mean((trueY - predY)**2)
@@ -102,7 +102,7 @@ def crossEntropyLossPrime(trueY, predY):
     return -(trueY / (predY + 1e-9))
 ```
 
-### Neural Networks
+### 4. Neural Networks
 ```python
 class neuralNetwork:
     def __init__(self):
@@ -118,7 +118,7 @@ class neuralNetwork:
         pass
 ```
 
-### Softmax Network
+### (a) Softmax Network
 ```python
 class softmaxNetwork(neuralNetwork):
     def __init__(self, inputSize, hiddenSize, outputSize):
@@ -142,7 +142,7 @@ class softmaxNetwork(neuralNetwork):
         self.firstLayer.backwardPropagation(self.activatedGradient, learningRate)
 ```
 
-### ReLU Network
+### (b) ReLU Network
 ```python
 class reluNetwork(neuralNetwork):
     def __init__(self, inputSize, hiddenSize, outputSize):
@@ -163,7 +163,7 @@ class reluNetwork(neuralNetwork):
         self.firstLayer.backwardPropagation(self.hiddenGradient, learningRate)
 ```
 
-### Tanh Network
+### (c) Tanh Network
 ```python
 class tanhNetwork(neuralNetwork):
     def __init__(self, inputSize, hiddenSize, outputSize):
