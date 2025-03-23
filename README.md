@@ -1,6 +1,4 @@
-# Neural Network from Scratch
-
-This repository contains a fully implemented neural network built from scratch using just Python and NumPy.
+# Neural Network from Scratch Using Numpy
 
 ## Features
 - Fully connected neural network implementation
